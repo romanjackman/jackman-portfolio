@@ -162,8 +162,7 @@ export function Home({
         </Reveal>
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {disciplines.map((d, i) => {
-            const cover =
-              d.sections?.[0]?.categories?.[0]?.images?.[0] ?? featured[i % featured.length].src;
+            const cover = d.cover;
             return (
               <Reveal key={d.id} delay={(i % 2) * 0.08}>
                 <button

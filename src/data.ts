@@ -98,6 +98,7 @@ export type Discipline = {
   title: string;
   blurb: string;
   kind: "design" | "video";
+  cover: string; // card/section cover image, chosen to represent the discipline
   sections?: Section[];
   reels?: Reel[];
 };
@@ -110,6 +111,7 @@ export const disciplines: Discipline[] = [
     blurb:
       "Static design across sports and brand — built to communicate clearly and carry an identity with confidence.",
     kind: "design",
+    cover: W("img-4695"),
     sections: [
       {
         title: "Sports Graphic Design",
@@ -192,6 +194,7 @@ export const disciplines: Discipline[] = [
     title: "Video Editing",
     blurb: "Motion work — storytelling through videography and editing.",
     kind: "video",
+    cover: "/video/interns.jpg",
     reels: [
       {
         title: "Intern program feature",
@@ -226,6 +229,7 @@ export const disciplines: Discipline[] = [
     blurb:
       "A full-season graphics system for Villanova Football — designed and produced any creative needed throughout the fall 2025 season.",
     kind: "design",
+    cover: W("img-4707"),
     sections: [
       {
         title: "Fall 2025 Season",
@@ -248,6 +252,7 @@ export const disciplines: Discipline[] = [
     blurb:
       "A complete design package for Villanova Women's Basketball — created every gameday graphic for the entire season, as well as any other needed promotional work.",
     kind: "design",
+    cover: W("img-4718"),
     sections: [
       {
         title: "2025–26 Season",

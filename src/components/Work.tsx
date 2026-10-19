@@ -29,23 +29,18 @@ export function Work({
         </Reveal>
         <div className="mt-14 grid gap-6 md:grid-cols-2">
           {disciplines.map((d, i) => {
-            const cover = d.sections?.[0]?.categories?.[0]?.images?.[0];
             return (
               <Reveal key={d.id} delay={(i % 2) * 0.08}>
                 <button
                   onClick={() => onOpenDiscipline(d.id)}
                   className="group relative block aspect-[16/10] w-full overflow-hidden rounded-sm border border-white/10 text-left"
                 >
-                  {cover ? (
-                    <img
-                      src={cover}
-                      alt=""
-                      loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover opacity-45 transition-all duration-700 group-hover:scale-105 group-hover:opacity-60"
-                    />
-                  ) : (
-                    <div className="absolute inset-0 bg-ink-800" />
-                  )}
+                  <img
+                    src={d.cover}
+                    alt=""
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover opacity-45 transition-all duration-700 group-hover:scale-105 group-hover:opacity-60"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent" />
                   <div className="absolute inset-0 flex flex-col justify-end p-8">
                     <span className="font-display text-sm text-accent">{d.num}</span>
