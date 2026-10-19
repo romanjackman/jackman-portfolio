@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+/*
+  Design tokens captured from the live site (romanportfoliocurrent.netlify.app):
+  deep-navy editorial look, Libre Caslon serif, white pill buttons.
+*/
+@theme {
+  --color-ink: #141424; /* page background */
+  --color-ink-800: #0e1726; /* raised panels */
+  --color-ink-900: #060b14; /* deepest panels */
+  --color-paper: #e4e9ef; /* primary text */
+  --color-muted: #97a2b1; /* secondary text */
+  --color-muted-2: #6b788a; /* labels / tertiary */
+  --color-line: rgba(255, 255, 255, 0.12);
+  --color-surface: rgba(255, 255, 255, 0.04);
+
+  --font-display: "Libre Caslon Display", "Times New Roman", Times, serif;
+  --font-body: "Libre Caslon Text", Georgia, "Times New Roman", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+/* Small-caps letterspaced label, used for eyebrows and meta keys. */
+.eyebrow {
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+  color: var(--color-muted-2);
+}
+
+/* Pill button — transparent with a hairline border, matching the live site. */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.7rem 1.4rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+.pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.pill-solid {
+  background: #fff;
+  color: var(--color-ink);
+  border-color: #fff;
+}
+.pill-solid:hover {
+  background: rgba(255, 255, 255, 0.86);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
