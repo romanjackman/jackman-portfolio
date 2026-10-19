@@ -1,16 +1,19 @@
 @import "tailwindcss";
 
 /*
-  Design tokens captured from the live site (romanportfoliocurrent.netlify.app):
-  deep-navy editorial look, Libre Caslon serif, white pill buttons.
+  Jackman Media — bolder editorial direction.
+  Navy + Libre Caslon serif, with a Carolina-blue accent pulled from the
+  Villanova gameday gradients so the site ties to the actual work.
 */
 @theme {
-  --color-ink: #141424; /* page background */
-  --color-ink-800: #0e1726; /* raised panels */
-  --color-ink-900: #060b14; /* deepest panels */
-  --color-paper: #e4e9ef; /* primary text */
-  --color-muted: #97a2b1; /* secondary text */
+  --color-ink: #0f1020; /* page background (slightly deeper for contrast) */
+  --color-ink-800: #141628; /* raised panels */
+  --color-ink-900: #090a16; /* deepest panels */
+  --color-paper: #e9edf3; /* primary text */
+  --color-muted: #9aa6b8; /* secondary text */
   --color-muted-2: #6b788a; /* labels / tertiary */
+  --color-accent: #5aa6e6; /* carolina-blue accent */
+  --color-accent-deep: #1f4e8c; /* navy-blue accent */
   --color-line: rgba(255, 255, 255, 0.12);
   --color-surface: rgba(255, 255, 255, 0.04);
 
@@ -29,6 +32,7 @@ body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 h1,
@@ -39,32 +43,49 @@ h3,
   font-weight: 400;
 }
 
-/* Small-caps letterspaced label, used for eyebrows and meta keys. */
+/* Fixed brand field behind everything: a soft navy→blue bloom + grain. */
+.field {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.field-bloom {
+  background:
+    radial-gradient(60vw 60vw at 78% -10%, rgba(90, 166, 230, 0.16), transparent 60%),
+    radial-gradient(50vw 50vw at 10% 110%, rgba(31, 78, 140, 0.18), transparent 60%);
+}
+.field-grain {
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
 .eyebrow {
   font-family: var(--font-body);
   text-transform: uppercase;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   font-size: 0.72rem;
   color: var(--color-muted-2);
 }
 
-/* Pill button — transparent with a hairline border, matching the live site. */
+/* Pill buttons */
 .pill {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 0.7rem 1.4rem;
+  padding: 0.75rem 1.5rem;
   font-size: 0.82rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #fff;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 .pill:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
 }
 .pill-solid {
   background: #fff;
@@ -72,15 +93,42 @@ h3,
   border-color: #fff;
 }
 .pill-solid:hover {
-  background: rgba(255, 255, 255, 0.86);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #06101f;
+}
+
+/* Accessible focus ring */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Continuous marquee strip */
+.marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+.marquee:hover {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  * {
-    animation: none !important;
-    transition: none !important;
+  .marquee {
+    animation: none;
   }
 }

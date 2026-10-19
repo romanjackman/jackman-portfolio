@@ -29,21 +29,24 @@ export function Nav({
         scrolled ? "bg-[rgba(6,11,20,0.78)] backdrop-blur-md border-b border-white/10" : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-6 sm:py-5">
         <button onClick={() => onNavigate("home")} className="text-left leading-none">
-          <span className="block text-xl font-bold tracking-[0.12em] text-white">JACKMAN</span>
-          <span className="block text-[0.6rem] tracking-[0.5em] text-muted-2">MEDIA</span>
+          <span className="block text-lg font-bold tracking-[0.12em] text-white sm:text-xl">JACKMAN</span>
+          <span className="block text-[0.55rem] tracking-[0.5em] text-muted-2 sm:text-[0.6rem]">MEDIA</span>
         </button>
-        <ul className="flex items-center gap-8">
+        <ul className="flex items-center gap-5 sm:gap-8">
           {links.map((l) => (
             <li key={l.screen}>
               <button
                 onClick={() => onNavigate(l.screen)}
-                className={`text-sm tracking-[0.18em] uppercase transition-colors ${
+                className={`relative text-xs tracking-[0.14em] uppercase transition-colors sm:text-sm sm:tracking-[0.18em] ${
                   screen === l.screen ? "text-white" : "text-muted hover:text-white"
                 }`}
               >
                 {l.label}
+                {screen === l.screen && (
+                  <span className="absolute -bottom-1.5 left-0 h-px w-full bg-accent" />
+                )}
               </button>
             </li>
           ))}

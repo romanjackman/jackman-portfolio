@@ -17,6 +17,27 @@ export const profile = {
   headshot: W("headshot"),
 };
 
+// Program names for the scrolling marquee / credibility strip.
+export const programs = [
+  "Villanova Athletics",
+  "Villanova Football",
+  "Villanova Women's Basketball",
+  "Gonzaga College High School",
+  "Capitol Hoops",
+  "Emerson Collective",
+  "VSB Campus Orgs",
+];
+
+// A curated strip of real graphics for the home "selected work" band.
+export const featured = [
+  { src: W("img-4707"), label: "Villanova Football" },
+  { src: W("img-4718"), label: "Villanova WBB" },
+  { src: W("img-4695"), label: "Eric Dixon Tribute" },
+  { src: W("img-4700"), label: "Capitol Hoops" },
+  { src: W("img-4697"), label: "Gonzaga" },
+  { src: W("img-4740"), label: "Campus Brands" },
+];
+
 export const homeStats = [
   { key: "Discipline", value: "Design & Visual Storytelling" },
   { key: "Focus", value: "Graphic Design · Video" },

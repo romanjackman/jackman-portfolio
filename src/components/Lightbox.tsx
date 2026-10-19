@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
 
 export function Lightbox({
   images,
@@ -56,11 +57,18 @@ export function Lightbox({
         >
           ‹
         </button>
-        <img
-          src={images[index]}
-          alt=""
-          className="max-h-[80vh] max-w-full rounded-sm object-contain"
-        />
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={images[index]}
+            src={images[index]}
+            alt={`Image ${index + 1} of ${images.length}`}
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="max-h-[80vh] max-w-full rounded-sm object-contain"
+          />
+        </AnimatePresence>
         <button
           onClick={next}
           aria-label="Next"

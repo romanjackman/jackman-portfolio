@@ -30,6 +30,8 @@ export function App() {
 
   return (
     <div className="min-h-screen">
+      <div className="field field-bloom" aria-hidden />
+      <div className="field field-grain" aria-hidden />
       <Nav screen={screen} onNavigate={go} />
       <main>
         {screen === "home" && <Home onNavigate={go} onOpenDiscipline={openDiscipline} />}
